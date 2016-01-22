@@ -1,0 +1,1 @@
+DELETE FROM Aluno WHERE nome = 'Jonas Hirata';

@@ -1,0 +1,1 @@
+UPDATE Sala SET capacidade = 26 WHERE id_sala = 1;

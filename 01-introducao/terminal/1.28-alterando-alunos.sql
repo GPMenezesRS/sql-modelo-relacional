@@ -1,0 +1,1 @@
+UPDATE Aluno SET altura = 1.89 WHERE nome = 'Rafael Consentino';
