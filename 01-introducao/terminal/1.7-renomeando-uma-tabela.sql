@@ -1,0 +1,1 @@
+ALTER TABLE Livro RENAME livros;

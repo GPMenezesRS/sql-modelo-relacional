@@ -1,0 +1,1 @@
+UPDATE livros SET preco = 115.9 WHERE titulo = 'Java';

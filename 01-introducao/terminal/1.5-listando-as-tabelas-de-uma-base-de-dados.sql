@@ -1,0 +1,3 @@
+USE livraria;
+
+SHOW TABLES;

@@ -1,0 +1,1 @@
+SOURCE 1.2-create-table-aluno.sql;

@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - @localhost" uuid="752df23b-2420-4fec-9f6a-e558358b0c7f">
+    <database-info product="MySQL" version="5.5.46-0+deb8u1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.37 ( Revision: 09940f05b4c98150f352e787a2549f11a2e9da93 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.4">
+      <schema id="1" name="roundcube"/>
+      <table id="2" parent="1" name="cache"/>
+      <table id="3" parent="1" name="cache_index"/>
+      <table id="4" parent="1" name="cache_messages"/>
+      <table id="5" parent="1" name="cache_shared"/>
+      <table id="6" parent="1" name="cache_thread"/>
+      <table id="7" parent="1" name="contactgroupmembers"/>
+      <table id="8" parent="1" name="contactgroups"/>
+      <table id="9" parent="1" name="contacts"/>
+      <table id="10" parent="1" name="dictionary"/>
+      <table id="11" parent="1" name="identities"/>
+      <table id="12" parent="1" name="searches"/>
+      <table id="13" parent="1" name="session"/>
+      <table id="14" parent="1" name="system"/>
+      <table id="15" parent="1" name="users"/>
+      <column id="16" parent="2" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="17" parent="2" name="cache_key">
+        <mandatory>1</mandatory>
+        <data-type>varchar(128)</data-type>
+      </column>
+      <column id="18" parent="2" name="created">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+        <default-expression>&apos;1000-01-01 00:00:00&apos;</default-expression>
+      </column>
+      <column id="19" parent="2" name="expires">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="20" parent="2" name="data">
+        <mandatory>1</mandatory>
+        <data-type>longtext</data-type>
+      </column>
+      <index id="21" parent="2" name="expires_index">
+        <columns>expires</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="22" parent="2" name="user_cache_index">
+        <columns>user_id
+cache_key</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <foreign-key id="23" parent="2" name="user_id_fk_cache">
+        <columns>user_id</columns>
+        <ref-key>~.users.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="24" parent="3" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="25" parent="3" name="mailbox">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="26" parent="3" name="expires">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="27" parent="3" name="valid">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="28" parent="3" name="data">
+        <mandatory>1</mandatory>
+        <data-type>longtext</data-type>
+      </column>
+      <index id="29" parent="3" name="expires_index">
+        <columns>expires</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="30" parent="3" name="PRIMARY">
+        <columns>user_id
+mailbox</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="31" parent="3" name="user_id_fk_cache_index">
+        <columns>user_id</columns>
+        <ref-key>~.users.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="32" parent="4" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="33" parent="4" name="mailbox">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="34" parent="4" name="uid">
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="35" parent="4" name="expires">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="36" parent="4" name="data">
+        <mandatory>1</mandatory>
+        <data-type>longtext</data-type>
+      </column>
+      <column id="37" parent="4" name="flags">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <index id="38" parent="4" name="expires_index">
+        <columns>expires</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="39" parent="4" name="PRIMARY">
+        <columns>user_id
+mailbox
+uid</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="40" parent="4" name="user_id_fk_cache_messages">
+        <columns>user_id</columns>
+        <ref-key>~.users.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="41" parent="5" name="cache_key">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="42" parent="5" name="created">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+        <default-expression>&apos;1000-01-01 00:00:00&apos;</default-expression>
+      </column>
+      <column id="43" parent="5" name="expires">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="44" parent="5" name="data">
+        <mandatory>1</mandatory>
+        <data-type>longtext</data-type>
+      </column>
+      <index id="45" parent="5" name="cache_key_index">
+        <columns>cache_key</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="46" parent="5" name="expires_index">
+        <columns>expires</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <column id="47" parent="6" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="48" parent="6" name="mailbox">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="49" parent="6" name="expires">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="50" parent="6" name="data">
+        <mandatory>1</mandatory>
+        <data-type>longtext</data-type>
+      </column>
+      <index id="51" parent="6" name="expires_index">
+        <columns>expires</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="52" parent="6" name="PRIMARY">
+        <columns>user_id
+mailbox</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="53" parent="6" name="user_id_fk_cache_thread">
+        <columns>user_id</columns>
+        <ref-key>~.users.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="54" parent="7" name="contactgroup_id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="55" parent="7" name="contact_id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="56" parent="7" name="created">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+        <default-expression>&apos;1000-01-01 00:00:00&apos;</default-expression>
+      </column>
+      <index id="57" parent="7" name="contactgroupmembers_contact_index">
+        <columns>contact_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="58" parent="7" name="PRIMARY">
+        <columns>contactgroup_id
+contact_id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="59" parent="7" name="contactgroup_id_fk_contactgroups">
+        <columns>contactgroup_id</columns>
+        <ref-key>~.contactgroups.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="60" parent="7" name="contact_id_fk_contacts">
+        <columns>contact_id</columns>
+        <ref-key>~.contacts.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="61" parent="8" name="contactgroup_id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="62" parent="8" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="63" parent="8" name="changed">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+        <default-expression>&apos;1000-01-01 00:00:00&apos;</default-expression>
+      </column>
+      <column id="64" parent="8" name="del">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="65" parent="8" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(128)</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <index id="66" parent="8" name="contactgroups_user_index">
+        <columns>user_id
+del</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="67" parent="8" name="PRIMARY">
+        <columns>contactgroup_id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="68" parent="8" name="user_id_fk_contactgroups">
+        <columns>user_id</columns>
+        <ref-key>~.users.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="69" parent="9" name="contact_id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="70" parent="9" name="changed">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+        <default-expression>&apos;1000-01-01 00:00:00&apos;</default-expression>
+      </column>
+      <column id="71" parent="9" name="del">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="72" parent="9" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(128)</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="73" parent="9" name="email">
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <column id="74" parent="9" name="firstname">
+        <mandatory>1</mandatory>
+        <data-type>varchar(128)</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="75" parent="9" name="surname">
+        <mandatory>1</mandatory>
+        <data-type>varchar(128)</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="76" parent="9" name="vcard">
+        <data-type>longtext</data-type>
+      </column>
+      <column id="77" parent="9" name="words">
+        <data-type>text</data-type>
+      </column>
+      <column id="78" parent="9" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <index id="79" parent="9" name="user_contacts_index">
+        <columns>user_id
+del</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="80" parent="9" name="PRIMARY">
+        <columns>contact_id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="81" parent="9" name="user_id_fk_contacts">
+        <columns>user_id</columns>
+        <ref-key>~.users.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="82" parent="10" name="user_id">
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="83" parent="10" name="language">
+        <mandatory>1</mandatory>
+        <data-type>varchar(5)</data-type>
+      </column>
+      <column id="84" parent="10" name="data">
+        <mandatory>1</mandatory>
+        <data-type>longtext</data-type>
+      </column>
+      <index id="85" parent="10" name="uniqueness">
+        <columns>user_id
+language</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="86" parent="10" name="uniqueness">
+        <columns>user_id
+language</columns>
+        <underlying-index>uniqueness</underlying-index>
+      </key>
+      <foreign-key id="87" parent="10" name="user_id_fk_dictionary">
+        <columns>user_id</columns>
+        <ref-key>~.users.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="88" parent="11" name="identity_id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="89" parent="11" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="90" parent="11" name="changed">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+        <default-expression>&apos;1000-01-01 00:00:00&apos;</default-expression>
+      </column>
+      <column id="91" parent="11" name="del">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="92" parent="11" name="standard">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="93" parent="11" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(128)</data-type>
+      </column>
+      <column id="94" parent="11" name="organization">
+        <mandatory>1</mandatory>
+        <data-type>varchar(128)</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="95" parent="11" name="email">
+        <mandatory>1</mandatory>
+        <data-type>varchar(128)</data-type>
+      </column>
+      <column id="96" parent="11" name="reply-to">
+        <mandatory>1</mandatory>
+        <data-type>varchar(128)</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="97" parent="11" name="bcc">
+        <mandatory>1</mandatory>
+        <data-type>varchar(128)</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="98" parent="11" name="signature">
+        <data-type>longtext</data-type>
+      </column>
+      <column id="99" parent="11" name="html_signature">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <index id="100" parent="11" name="email_identities_index">
+        <columns>email
+del</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="101" parent="11" name="user_identities_index">
+        <columns>user_id
+del</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="102" parent="11" name="PRIMARY">
+        <columns>identity_id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="103" parent="11" name="user_id_fk_identities">
+        <columns>user_id</columns>
+        <ref-key>~.users.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="104" parent="12" name="search_id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="105" parent="12" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="106" parent="12" name="type">
+        <mandatory>1</mandatory>
+        <data-type>int(3)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="107" parent="12" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(128)</data-type>
+      </column>
+      <column id="108" parent="12" name="data">
+        <data-type>text</data-type>
+      </column>
+      <index id="109" parent="12" name="uniqueness">
+        <columns>user_id
+type
+name</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="110" parent="12" name="PRIMARY">
+        <columns>search_id</columns>
+        <primary>1</primary>
+      </key>
+      <key id="111" parent="12" name="uniqueness">
+        <columns>user_id
+type
+name</columns>
+        <underlying-index>uniqueness</underlying-index>
+      </key>
+      <foreign-key id="112" parent="12" name="user_id_fk_searches">
+        <columns>user_id</columns>
+        <ref-key>~.users.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="113" parent="13" name="sess_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(128)</data-type>
+      </column>
+      <column id="114" parent="13" name="created">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+        <default-expression>&apos;1000-01-01 00:00:00&apos;</default-expression>
+      </column>
+      <column id="115" parent="13" name="changed">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+        <default-expression>&apos;1000-01-01 00:00:00&apos;</default-expression>
+      </column>
+      <column id="116" parent="13" name="ip">
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)</data-type>
+      </column>
+      <column id="117" parent="13" name="vars">
+        <mandatory>1</mandatory>
+        <data-type>mediumtext</data-type>
+      </column>
+      <index id="118" parent="13" name="changed_index">
+        <columns>changed</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="119" parent="13" name="PRIMARY">
+        <columns>sess_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="120" parent="14" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="121" parent="14" name="value">
+        <data-type>mediumtext</data-type>
+      </column>
+      <key id="122" parent="14" name="PRIMARY">
+        <columns>name</columns>
+        <primary>1</primary>
+      </key>
+      <column id="123" parent="15" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="124" parent="15" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(128)</data-type>
+      </column>
+      <column id="125" parent="15" name="mail_host">
+        <mandatory>1</mandatory>
+        <data-type>varchar(128)</data-type>
+      </column>
+      <column id="126" parent="15" name="created">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+        <default-expression>&apos;1000-01-01 00:00:00&apos;</default-expression>
+      </column>
+      <column id="127" parent="15" name="last_login">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="128" parent="15" name="language">
+        <data-type>varchar(5)</data-type>
+      </column>
+      <column id="129" parent="15" name="preferences">
+        <data-type>longtext</data-type>
+      </column>
+      <index id="130" parent="15" name="username">
+        <columns>username
+mail_host</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="131" parent="15" name="PRIMARY">
+        <columns>user_id</columns>
+        <primary>1</primary>
+      </key>
+      <key id="132" parent="15" name="username">
+        <columns>username
+mail_host</columns>
+        <underlying-index>username</underlying-index>
+      </key>
+    </database-model>
+  </data-source>
+</component>

@@ -1,0 +1,1 @@
+INSERT INTO livros (titulo, preco) VALUES ('Java', 98.75);
